@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Comparando Cartas.
+// Desafio Super Trunfo.
 int main(){
     // Declaração de variáveis.
     char estado01, estado02;
@@ -10,6 +10,7 @@ int main(){
     int pontos_turisticos01, pontos_turisticos02;
     float area01, area02, densidade_populacional01, densidade_populacional02;
     float pib01, pib02, pib_per_capta01, pib_per_capta02;
+    int opcao;
 
     // Entrada de dados da cidade 1.
     printf("Informe o código do estado 1: ");
@@ -67,15 +68,94 @@ int main(){
     densidade_populacional02 = populacao02 / area02;
     pib_per_capta02 = pib02 / populacao02;
 
-    // Comparação das cartas.
-        printf("\n====== COMPARAÇÃO DE CARTAS (atributo área urbana) ======\n");
-        printf("Carta 1 - %s: %.2f km²\n", nome_cidade01, area01);
-        printf("Carta 2 - %s: %.2f km²\n", nome_cidade02, area02);
-        if(area01 > area02){
-            printf("Resultado: Carta 1 venceu.\n");
-        }else{
-            printf("Resultado: Carta 2 venceu.\n");
-        }
+    // Menu interativo.
+    printf("\n====== MENU PRINCIPAL ======\n");
+    printf("Escolha uma das opções abaixo:\n");
+    printf("1. População\n");
+    printf("2. Área urbana\n");
+    printf("3. PIB\n");
+    printf("4. Pontos turísticos\n");
+    printf("5. Densidade populacional\n");
+    printf("\nInforme a opção desejada: ");
+    scanf("%d", &opcao);
+
+    // Processamento da opção escolhida.
+    printf("\n ====== RESULTADO ======\n");
+
+    switch(opcao){
+        case 1:
+            if(populacao01 > populacao02){
+                printf("A cidade de %s, com uma população de %d habitantes venceu a cidade de %s, com uma população de %d habitantes.\n", nome_cidade01, populacao01, nome_cidade02, populacao02);
+                break;
+
+            }else if(populacao02 > populacao01){
+                printf("A cidade de %s, com uma população de %d habitantes venceu a cidade de %s, com uma população de %d habitantes.\n", nome_cidade02, populacao02, nome_cidade01, populacao01);
+                break;
+
+            }else{
+                printf("Houve um empate entre as cidades de %s e %s, ambas com uma população de %d habitantes.\n", nome_cidade01, nome_cidade02, populacao01);
+                break;
+            }
+
+        case 2:
+            if(area01 > area02){
+                printf("A cidade de %s, com uma área urbana de %.2f km² venceu a cidade de %s, com uma área urbana de %.2f km².\n", nome_cidade01, area01, nome_cidade02, area02);
+                break;
+
+            }else if(area02 > area01){
+                printf("A cidade de %s, com uma área urbana de %.2f km² venceu a cidade de %s, com uma área urbana de %.2f km².\n", nome_cidade02, area02, nome_cidade01, area01);
+                break;
+
+            }else{
+                printf("Houve um empate entre as cidades de %s e %s, ambas com uma área urbana de %.2f km².\n", nome_cidade01, nome_cidade02, area01);
+                break;
+            }
+
+        case 3:
+            if(pib01 > pib02){
+                printf("A cidade de %s, com um PIB de R$ %.2f venceu a cidade de %s, com um PIB de R$ %.2f.\n", nome_cidade01, pib01, nome_cidade02, pib02);
+                break;
+
+            }else if(pib02 > pib01){
+                printf("A cidade de %s, com um PIB de R$ %.2f venceu a cidade de %s, com um PIB de R$ %.2f.\n", nome_cidade02, pib02, nome_cidade01, pib01);
+                break;
+
+            }else{
+                printf("Houve um empate entre as cidades de %s e %s, ambas com um PIB de R$ %.2f.\n", nome_cidade01, nome_cidade02, pib01);
+                break;
+            }
+
+        case 4:
+            if(pontos_turisticos01 > pontos_turisticos02){
+                printf("A cidade de %s, com %d pontos turísticos venceu a cidade de %s, com %d pontos turísticos.\n", nome_cidade01, pontos_turisticos01, nome_cidade02, pontos_turisticos02);
+                break;
+
+            }else if(pontos_turisticos02 > pontos_turisticos01){
+                printf("A cidade de %s, com %d pontos turísticos venceu a cidade de %s, com %d pontos turísticos.\n", nome_cidade02, pontos_turisticos02, nome_cidade01, pontos_turisticos01);
+                break;
+
+            }else{
+                printf("Houve um empate entre as cidades de %s e %s, ambas com %d pontos turísticos.\n", nome_cidade01, nome_cidade02, pontos_turisticos01);
+                break;
+            }
+
+        case 5:
+            if(densidade_populacional01 > densidade_populacional02){
+                printf("A cidade de %s, com uma densidade populacional de %.2f habitantes/km² venceu a cidade de %s, com uma densidade populacional de %.2f habitantes/km².\n", nome_cidade02, densidade_populacional02, nome_cidade01, densidade_populacional01);
+                break;
+
+            }else if(densidade_populacional02 < densidade_populacional01){
+                printf("A cidade de %s, com uma densidade populacional de %.2f habitantes/km² venceu a cidade de %s, com uma densidade populacional de %.2f habitantes/km².\n", nome_cidade01, densidade_populacional01, nome_cidade02, densidade_populacional02);
+                break;
+
+            }else{
+                printf("Houve um empate entre as cidades de %s e %s, ambas com uma densidade populacional de %.2f habitantes/km².\n", nome_cidade01, nome_cidade02, densidade_populacional01);
+                break;
+            }
+                
+        default:
+            printf("Opção inválida.\n");
+    }  
 
     return 0;
 }
